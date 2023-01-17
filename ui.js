@@ -51,4 +51,25 @@ class UI {
     searchContainer.insertBefore(div, search);
     setTimeout(() => this.clearAlert(), 3000);
   }
+
+  showRepos(repos){
+    let output = '';
+    repos.forEach((repo) => {
+      output += `
+        <div class="card card-body mb-2">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="${repo.html_url}" target="_black">${repo.name}</a>
+            </div>
+            <div class="col-md-6">
+              <span class="badge badge-primary mt-1">Stars: ${repo.stargazers_count}</span>
+              <span class="badge badge-secondary mt-1">Watchers: ${repo.watchers_count}</span>
+              <span class="badge badge-success mt-1">Forks: ${repo.forks_count}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    document.getElementById('repos').innerHTML = output;
+  }
 }
